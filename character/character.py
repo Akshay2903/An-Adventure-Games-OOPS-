@@ -29,6 +29,8 @@ class Character():
         
 class Enemy(Character):
   
+  enemies_defeated = 0
+  
   def __init__(self, char_name, char_description):
     
     super().__init__(char_name, char_description)
@@ -38,6 +40,7 @@ class Enemy(Character):
   def fight(self, combat_item):
     if combat_item == self.weakness:
       print("You fend " + self.name + " off with the " + combat_item)
+      Enemy.enemies_defeated += 1
       return True
     else:
       print(self.name + " crushes you, puny adventurer!")
@@ -48,6 +51,13 @@ class Enemy(Character):
     
   def get_weakness(self):
     return self.weakness
+  
+  # Getters and setters for the enemies_defeated variable
+  def get_defeated(self):
+    return Enemy.enemies_defeated
+  
+  def set_defeated(self, number_defeated):
+    Enemy.enemies_defeated = number_defeated
   
   def steal(self):
     print("You steal from " + self.name)
